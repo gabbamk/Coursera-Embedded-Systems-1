@@ -40,4 +40,17 @@ void main() {
 
 }
 
-/* Add other Implementation File Code Here */
+
+void print_statistics(char* array,int arraySize){}
+
+void print_array(char* array,int arraySize){}
+
+char find_median(char* sortedArray,int arraySize){}
+
+char find_mean(char* array,int arraySize){}
+
+char find_maximum(char* array,int arraySize){}
+
+char find_minimum(char* array,int arraySize){}
+
+char *sort_array(char* array,int arraySize){}
