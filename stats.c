@@ -35,18 +35,52 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  unsigned char mean;
-  mean = find_mean(test, SIZE);
-  printf("%d \n", mean);
+  print_statistics(test,SIZE);
 
 }
 
 
-void print_statistics(unsigned char* array,int arraySize){}
+void print_statistics(unsigned char* array,int arraySize){
 
-void print_array(unsigned char* array,int arraySize){}
+  int median;
+  int mean;
+  int maximum;
+  int minimum;
 
-unsigned char find_median(unsigned char* sortedArray,int arraySize){}
+  printf("\nSorting array:");
+  print_array(array,arraySize);
+
+  printf("\n \nResult of sorted array:");
+  sort_array(array,arraySize);
+  print_array(array,arraySize);
+
+  median = find_median(array,arraySize);
+  mean = find_mean(array,arraySize);
+  maximum = find_maximum(array,arraySize);
+  minimum =find_minimum(array,arraySize);
+
+  printf("\n\nThe median is %d, the mean is %d, the maximum is %d, the minimum is %d.\n", median, mean, maximum, minimum);
+}
+
+void print_array(unsigned char* array,int arraySize){
+
+	for(int i=0;i<arraySize;i++)
+	{
+		if(i%5==0)
+		printf("\n");
+		printf("%d, ", array[i]);
+	}
+}
+
+unsigned char find_median(unsigned char* sortedArray,int arraySize){
+
+	if(arraySize%2==0)
+		return sortedArray[arraySize/2];
+	else
+	{
+		return ((sortedArray[arraySize/2] + sortedArray[(arraySize/2)+1])/2);
+	}
+}
 
 unsigned char find_mean(unsigned char* array,int arraySize){
 
@@ -87,4 +121,18 @@ unsigned char find_minimum(unsigned char* array,int arraySize){
     return minimum;
 }
 
-unsigned char *sort_array(unsigned char* array,int arraySize){}
+void sort_array(unsigned char* array,int arraySize){
+	
+	unsigned char charBuffer;
+
+	for(int sortIter=0;sortIter<(arraySize-1);sortIter++)
+	    for(int sortID=0;sortID<(arraySize-1);sortID++)
+	    {
+	    	if(array[sortID]<array[sortID+1])
+	    	{
+	    	charBuffer=array[sortID];
+	    	array[sortID]=array[sortID+1];
+	    	array[sortID+1]=charBuffer;
+	    	}
+	    }
+}

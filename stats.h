@@ -106,8 +106,8 @@ unsigned char find_minimum(unsigned char* array,int arraySize);
  * @param array 	An unsigned char pointer to an n-element data array
  * @param arraySize An int that corresponds to the size of the array.
  *
- * @return Returns a pointer to location of the first value of the sorted array.
+ * @return Returns void since the array is changed.
  */
-unsigned char *sort_array(unsigned char* array,int arraySize);
+void sort_array(unsigned char* array,int arraySize);
 
 #endif /* __STATS_H__ */
