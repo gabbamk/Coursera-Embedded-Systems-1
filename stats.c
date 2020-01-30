@@ -9,13 +9,13 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file "stats.c"
+ * @brief Main .c file for the stats exercise in the first module of the Introduction to Embedded Systems course
  *
- * <Add Extended Description Here>
+ * Runs some statistics functions and prints the results.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Gabriel Cayón
+ * @date 29/01/2020
  *
  */
 
@@ -35,22 +35,56 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
+  unsigned char mean;
+  mean = find_mean(test, SIZE);
+  printf("%d \n", mean);
 
 }
 
 
-void print_statistics(char* array,int arraySize){}
+void print_statistics(unsigned char* array,int arraySize){}
 
-void print_array(char* array,int arraySize){}
+void print_array(unsigned char* array,int arraySize){}
 
-char find_median(char* sortedArray,int arraySize){}
+unsigned char find_median(unsigned char* sortedArray,int arraySize){}
 
-char find_mean(char* array,int arraySize){}
+unsigned char find_mean(unsigned char* array,int arraySize){
 
-char find_maximum(char* array,int arraySize){}
+	unsigned int sum=0;
+	unsigned char result;
 
-char find_minimum(char* array,int arraySize){}
+	for(int i=0;i<arraySize;i++)
+	{
+		sum+=array[i];
+	}
+	result = (sum/arraySize);
+	return result;
 
-char *sort_array(char* array,int arraySize){}
+}
+
+unsigned char find_maximum(unsigned char* array,int arraySize){
+    
+    unsigned char maximum=0;
+    
+    for(int i=0;i<arraySize;i++)
+    {
+        if(array[i]>maximum)
+        maximum=array[i];
+    }
+    return maximum;
+
+}
+
+unsigned char find_minimum(unsigned char* array,int arraySize){
+
+	unsigned char minimum=255;
+    
+    for(int i=0;i<arraySize;i++)
+    {
+        if(array[i]<minimum)
+        minimum = array[i];
+    }
+    return minimum;
+}
+
+unsigned char *sort_array(unsigned char* array,int arraySize){}

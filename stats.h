@@ -9,7 +9,7 @@
  *
  *****************************************************************************/
 /**
- * @file stats.h
+ * @file "stats.h"
  * @brief Header file including the function definitions of the first week's assigment of the Coursera
  *		  Introduction to Embedded Systems by University of Colorado.
  *
@@ -34,7 +34,7 @@
  *
  * @return Returns nothing as it only prints the results in console.
  */
-void print_statistics(char* array,int arraySize);
+void print_statistics(unsigned char* array,int arraySize);
 
 /**
  * @brief Given an array of data and a length, prints the array to the screen
@@ -46,7 +46,7 @@ void print_statistics(char* array,int arraySize);
  *
  * @return Returns nothing as it only prints the results in console.
  */
-void print_array(char* array,int arraySize);
+void print_array(unsigned char* array,int arraySize);
 
 /**
  * @brief Given an array of data and a length, returns the median value
@@ -59,7 +59,7 @@ void print_array(char* array,int arraySize);
  *
  * @return Returns an unsigned char with the result.
  */
-char find_median(char* sortedArray,int arraySize);
+unsigned char find_median(unsigned char* sortedArray,int arraySize);
 
 /**
  * @brief Given an array of data and a length, returns the mean value
@@ -71,7 +71,7 @@ char find_median(char* sortedArray,int arraySize);
  *
  * @return Returns an unsigned char with the result.
  */
-char find_mean(char* array,int arraySize);
+unsigned char find_mean(unsigned char* array,int arraySize);
 
 /**
  * @brief Given an array of data and a length, returns the maximum value>
@@ -83,7 +83,7 @@ char find_mean(char* array,int arraySize);
  *
  * @return Returns an unsigned char with the result.
  */
-char find_maximum(char* array,int arraySize);
+unsigned char find_maximum(unsigned char* array,int arraySize);
 
 /**
  * @brief Given an array of data and a length, returns the minimum value>
@@ -95,7 +95,7 @@ char find_maximum(char* array,int arraySize);
  *
  * @return Returns an unsigned char with the result.
  */
-char find_minimum(char* array,int arraySize);
+unsigned char find_minimum(unsigned char* array,int arraySize);
 
 /**
  * @brief Given an array of data and a length, sorts the array from largest to smallest. 
@@ -108,6 +108,6 @@ char find_minimum(char* array,int arraySize);
  *
  * @return Returns a pointer to location of the first value of the sorted array.
  */
-char *sort_array(char* array,int arraySize);
+unsigned char *sort_array(unsigned char* array,int arraySize);
 
 #endif /* __STATS_H__ */
