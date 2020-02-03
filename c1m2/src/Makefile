@@ -15,10 +15,10 @@
 # Use: make [TARGET] [PLATFORM-OVERRIDES]
 #
 # Build Targets:
-#      <Put a description of the supported targets here>
+#	  <Put a description of the supported targets here>
 #
 # Platform Overrides:
-#      <Put a description of the supported Overrides here
+#	  <Put a description of the supported Overrides here
 #
 #------------------------------------------------------------------------------
 include sources.mk
@@ -26,48 +26,48 @@ include sources.mk
 # compiler flags, linker flags, and architecture flags
 
 
-GENERAL = -Wall     \
-	  	  -Werror   \
-	      -g	    \
-	      -O0       \
-	      -std=c99  
+GENERAL = -Wall\
+	  	  -Werror\
+		  -g\
+		  -O0\
+		  -std=c99  
 
 # Platform Overrides
 PLATFORM =
 
 #make build PLATFORM=MSP432
-ifeq($(PLATFORM),MSP432)
+ifeq ($(PLATFORM),MSP432)
 
-#Architecture specific flags
-LINKER_FILE = msp432p401r.lds
-CPU 		= cortex-m4
-ARCH 		= thumb
-SPECS 		= nosys.specs
+	#Architecture specific flags
+	LINKER_FILE = ../msp432p401r.lds
+	CPU 		= cortex-m4
+	ARCH 		= thumb
+	SPECS 		= nosys.specs
 
-#Flags and defines
-CC     		= arm-none-eabi-gcc
-LDFLAGS 	= -Wl,-Map=c1m2.map $(INCLUDES) -T $(LINKER_FILE)
+	#Flags and defines
+	CC	 		= arm-none-eabi-gcc
+	LDFLAGS 	= -Wl,-Map=c1m2.map $(INCLUDES) -T $(LINKER_FILE)
 
-CPPFLAGS 	= -DMSP432 -MD
+	CPPFLAGS 	= -DMSP432 -MD
 
-CFLAGS 		= -mcpu=$(CPU) -m$(ARCH) --specs=$(SPECS) \
-			  -march=armv7e-m -mfloat-abi=hard 		  \
-			  -mfpu=fpv4-sp-d16					  
+	CFLAGS 		= -mcpu=$(CPU) -m$(ARCH) --specs=$(SPECS)\
+				  -march=armv7e-m -mfloat-abi=hard\
+				  -mfpu=fpv4-sp-d16					  
 
-OBJS		= $(SOURCES:,c=.o)
-DUMP 		= arm-none-eabi-objdump
+	OBJS		= $(SOURCES:,c=.o)
+	DUMP 		= arm-none-eabi-objdump
 
 endif
 
 
 
 #make build PLATFORM=HOST
-ifeq($(PLATFORM),HOST)
+ifeq ($(PLATFORM),HOST)
 
-CC 			= gcc
-CPPFLAGS 	= -DHOST -MD
-DUMP 		= objdump
-OBJS		= $(SOURCSE_BOTH:.c=.o)
+	CC 			= gcc
+	CPPFLAGS 	= -DHOST -MD $(INCLUDES)
+	DUMP 		= objdump
+	OBJS		= $(SOURCES:.c=.o)
 
 endif
 
