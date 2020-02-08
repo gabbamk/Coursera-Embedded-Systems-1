@@ -90,4 +90,96 @@ void set_all(char * ptr, char value, unsigned int size);
  */
 void clear_all(char * ptr, unsigned int size);
 
+/**
+ * @brief Moves data from src to dst
+ *
+ * Take two byte pointers and a length of bytes to move from the sources location to destination
+ * The behaviour should handle overlap of source and destination, copy should occur with no data corruption
+ *
+ * @param src Pointer to move data from
+ * @param dst Pointer to move data to
+ * @param length Number of bytes to move
+ *
+ * @return uint8_t pointer to destination.
+ */
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
+
+/**
+ * @brief Copies data from src to dst
+ *
+ * Take 2 byte pointers and length of bytes to copy
+ * Overlap should still ocurr if theres overlap although it might corrupt data
+ *
+ * @param src Pointer to copy data from
+ * @param dst Pointer to copy data to
+ * @param length Number of bytes to copy
+ *
+ * @return uint8_t pointer to destination.
+ */
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Copies data from src to dst
+ *
+ * This should take a pointer to a source memory location and set all locations of that memory to a certain value
+ * Does not use set_all function
+ *
+ * @param src Pointer to chage from
+ * @param length Number of bytes to change
+ * @param value Value to change bytes to
+ *
+ * @return uint8_t pointer to source location.
+ */
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value); /* size_t is a type used to represent the size of objects in bytes. */
+
+/**
+ * @brief Copies data from src to dst
+ *
+ * This should take a pointer to a source memory location and set all locations of that memory to zero
+ * Does not use set_all function
+ *
+ * @param src Pointer to change from
+ * @param length Number of bytes to change
+ *
+ * @return uint8_t pointer to source location.
+ */
+uint8_t * my_memzero(uint8_t * src, size_t length); /* size_t is a type used to represent the size of objects in bytes.
+																  It used as a return type by the sizeof operator*/
+/**
+ * @brief Copies data from src to dst
+ *
+ * This should take a pointer to a source memory location and reverse all the order of all of the bytes
+ *
+ * @param src Pointer to chage from
+ * @param length Number of bytes to reverse
+ *
+ * @return uint8_t pointer to source location.
+ */
+uint8_t * my_reverse(uint8_t * src, size_t length); /* size_t is a type used to represent the size of objects in bytes.
+																  It used as a return type by the sizeof operator*/
+
+/**
+ * @brief Reserves words
+ *
+ * Alocates a number of bytes to reserve in memory.
+ *
+ * @param length Number of bytes to reserve
+ *
+ * @return uint8_t pointer to source location or null if not successful.
+ */
+int32_t * reserve_words(size_t length);
+
+/**
+ * @brief Frees words
+ *
+ * Frees a dynamic memory allocation by providing the pointer src to the function
+ *
+ * @param length Number of bytes to reserve
+ *
+ * @return uint8_t pointer to source location or null if not successful.
+ */
+void free_words(int32_t * src);
+
+
 #endif /* __MEMORY_H__ */
