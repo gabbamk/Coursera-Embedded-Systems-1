@@ -22,6 +22,7 @@
  */
 #include "platform.h"
 #include "memory.h"
+#include "data.h"
 
 #define MAX_LENGTH (10)
 char buffer[MAX_LENGTH];
@@ -30,6 +31,11 @@ char buffer[MAX_LENGTH];
 int main(void) {
   unsigned int i;
   char value;
+
+  int32_t data = 1234;
+  uint32_t base = 2;
+  uint8_t * ptr;
+  ptr=(uint8_t*) malloc(MAX_LENGTH*sizeof(uint8_t));
 
   /* Code below does some arbitrary memory Reads & writes */
   clear_all(buffer, MAX_LENGTH);

@@ -72,7 +72,6 @@ ifeq ($(PLATFORM),HOST)
 endif
 
 
-OBJS = $(SRCS:.c=.o)
 
 %.o : %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(GENERAL) $(LDFLAGS) -c $< -o $@
