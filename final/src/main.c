@@ -10,9 +10,9 @@
  *****************************************************************************/
 /**
  * @file main.c
- * @brief Main entry point to the C1M2 Assessment
+ * @brief Main entry point to the Final Assessment
  *
- * This file contains the main code for the C1M2 assesment. Students
+ * This file contains the main code for the Final assesment. Students
  * are not to change any of the code, they are instead supposed to compile
  * these files with their makefile.
  *

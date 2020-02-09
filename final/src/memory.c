@@ -16,11 +16,15 @@
  * writing to memory via function calls. There is also a globally
  * allocated buffer array used for manipulation.
  *
- * @author Alex Fosdick
- * @date April 1 2017
+ * @author Gabriel Cayón
+ * @date February 8 2020
  *
  */
+#include <stdint.h>
+#include <stdlib.h>
 #include "memory.h"
+
+
 
 /***********************************************************
  Function Definitions
@@ -50,63 +54,83 @@ void clear_all(char * ptr, unsigned int size){
 
 
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length){
-	/*
-	Take two byte pointers and a length of bytes to move from the sources location to destination
-	The behaviour should handle overlap of source and destination, copy should occur with no data corruption
-	Using pointers
-	Should return a pointer to destination (dst)
-	*/
+    uint8_t *ptrBuffer;
+    unsigned int i = 0;
+
+    ptrBuffer = (uint8_t*) malloc(length*sizeof(uint8_t));
+
+    for(i=0;i<length;i++){
+    *(ptrBuffer + i)= *(src + i);
+    *(src + i)=0;
+    }
+
+    free(src);
+
+    for(i=0;i<length;i++){
+    	*(dst + i) = *(ptrBuffer + i);
+    	*(ptrBuffer)=0;
+    }
+
+    free(ptrBuffer);
+    return dst;
 }
 
 uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length){
-	/*
-	Take 2 byte pointers and length of bytes to copy
-	Overlap should still ocurr if theres overlap
-	Using pointers
-	Should return a pointer to the destination (dst)
-	*/
+    unsigned int i = 0;
+
+    for(i=0;i<length;i++){
+    *(src + i) = *(dst + i);
+    }
+
+    return dst;
 }
 
 uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value){ /* size_t is a type used to represent the size of objects in bytes.
 																  It used as a return type by the sizeof operator*/
-	/*
-	This should take a pointer to a source memory location and set all locations of that memory to a certain value
-	Should not use set_all function
-	Should return a pointer to src location
-	*/
+    unsigned int i = 0;
+
+    for(i=0;i<length;i++){
+    *(src + i) = value;
+    }
+    
+    return src;
 }
 
 uint8_t * my_memzero(uint8_t * src, size_t length){ /* size_t is a type used to represent the size of objects in bytes.
 																  It used as a return type by the sizeof operator*/
-	/*
-	This should take a pointer to a source memory location and set all locations of that memory to zero
-	Should not use set_all function
-	Should return a pointer to src location
-	*/
+    unsigned int i = 0;
+
+    for(i=0;i<length;i++){
+    *(src + i) = 0;
+    }
+    
+    return src;
 }
 
 uint8_t * my_reverse(uint8_t * src, size_t length){ /* size_t is a type used to represent the size of objects in bytes.
 																  It used as a return type by the sizeof operator*/
-	/*
-	This should take a pointer to a memory location and length in bytes and reverse the order of all of the bytes
-	Should not use set_all function
-	Should return a pointer to src location
-	Note: if the function is called and return is not used, compiler pops the result
-	*/
+    uint8_t *ptrBuffer;
+    unsigned int i = 0;
+
+    ptrBuffer = (uint8_t*) malloc(length*sizeof(uint8_t));
+
+    for(i=0;i<length;i++){
+    *(ptrBuffer + i)= *(src + i);
+    }
+
+    for(i=0;i<length;i++){
+    *(src + i)= *(ptrBuffer + length - 1 - i);
+    }
+
+    return src;
 }
 
 int32_t * reserve_words(size_t length){
-	/*
-	This should take number of words to allocate in dynamic memory
-	Using pointers
-	Should return a pointer to memory if successful or null pointer if not successful
-	*/
+	int32_t * ptr;
+	ptr = (int32_t*) malloc(length*sizeof(int32_t));
+    return ptr;
 }
 
 void free_words(int32_t * src){
-	/*
-	Should free a dynamic memory allocation by providing the pointer src to the function
-	Using pointers
-	*/
-
+	free(src);
 }

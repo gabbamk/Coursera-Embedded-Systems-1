@@ -22,6 +22,8 @@
 ******************************************************************************/
 #elif defined (HOST)
 #include <stdio.h>
+#include <stdint.h>
+#include <stddef.h>
 #define PRINTF(...) printf(__VA_ARGS__)
 /******************************************************************************
  Platform - Unsupported

@@ -19,6 +19,8 @@
  * @date April 1 2017
  *
  */
+#include <stdint.h>
+#include <stdlib.h>
 #ifndef __MEMORY_H__
 #define __MEMORY_H__
 

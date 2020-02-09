@@ -29,8 +29,8 @@ endif
 # The list of include directories (Hing: Use the -I flag)
 ifeq ($(PLATFORM),HOST)
   SOURCES =             \
-    ./main.c        \
-    ./memory.c
+  ./main.c        \
+  ./memory.c
   INCLUDES =                   \
   -I../include/common/   
 endif

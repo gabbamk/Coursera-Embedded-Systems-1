@@ -82,17 +82,17 @@ OBJS = $(SRCS:.c=.o)
 
 %.asm : %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(GENERAL) $(LDFLAGS) -c $< -o $@
-	objdump -S $@
+	$(DUMP) -S $@
 
 .PHONY: build
-build: c1m2.out
-c1m2.out: $(SOURCES)
-	$(CC) $(SOURCES) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o c1m2.out
-	size c1m2.out
+build: final.out
+final.out: $(SOURCES)
+	$(CC) $(SOURCES) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(GENERAL) -o final.out
+	size final.out
 
 .PHONY: compile-all
 compile-all: $(SOURCES)
-	$(CC) $(SOURCES) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -c
+	$(CC) $(SOURCES) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(GENERAL) -c
 
 .PHONY: clean
 clean:
