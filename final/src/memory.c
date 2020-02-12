@@ -72,6 +72,7 @@ uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length){
     }
 
     free(ptrBuffer);
+    
     return dst;
 }
 
@@ -119,8 +120,10 @@ uint8_t * my_reverse(uint8_t * src, size_t length){ /* size_t is a type used to 
     }
 
     for(i=0;i<length;i++){
-    *(src + i)= *(ptrBuffer + length - 1 - i);
+    *(src + i)= *(ptrBuffer + length - i - 1);
     }
+
+    free(ptrBuffer);
 
     return src;
 }

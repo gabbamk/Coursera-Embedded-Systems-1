@@ -32,6 +32,13 @@ int main(void) {
   unsigned int i;
   char value;
 
+  uint32_t value2;
+
+  int32_t data = -3000;
+  uint32_t base = 2;
+  uint8_t * ptr;
+  ptr=(uint8_t*) malloc(MAX_LENGTH*sizeof(uint8_t));
+
   /* Code below does some arbitrary memory Reads & writes */
   clear_all(buffer, MAX_LENGTH);
   set_all( ( buffer + 8 ), 43, 2); 
@@ -46,10 +53,19 @@ int main(void) {
   set_value(buffer, 7, (value - 12));
   set_value(buffer, 5, 0x5F);
 
-  for ( i = 0; i < MAX_LENGTH; i++ ){
-    PRINTF("%c", buffer[i]);
+  value = my_itoa(data, ptr, base);
+
+  PRINTF("%d\n", value);
+
+  for ( i = 0; i < value; i++ ){
+    PRINTF("%c", ptr[i]);
   }
   PRINTF("\n");
+
+
+  value2 = my_atoi(ptr, value, base);
+
+  PRINTF("%i \n", value2);
+
   return 0;
 }
-
